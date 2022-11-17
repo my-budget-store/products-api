@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using MyBud.ProductsApi.Interfaces;
@@ -8,7 +9,7 @@ namespace MyBud.ProductsApi.Controllers.V1
 {
     [ApiController]
     [ApiVersion("1.0")]
-    //[Authorize]
+    [Authorize]
     [Route("v{version:apiVersion}/[controller]")]
     public class ProductsController : ControllerBase
     {
