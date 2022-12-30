@@ -9,7 +9,8 @@ services:
       context: .
       dockerfile: src/MyBud.ProductsApi/Dockerfile
     ports:
-      - 7182:7182
+      - 7182:443
+      - 5182:80
     networks:
       - my-budget-store
 
