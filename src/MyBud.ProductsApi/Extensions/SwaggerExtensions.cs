@@ -13,7 +13,7 @@ namespace MyBud.ProductsApi.Extensions
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Products API - V1", Version = "v1" });
                 c.TagActionsBy(api => api.HttpMethod);
 
-                var filePath = Path.Combine(System.AppContext.BaseDirectory, "MyBud.ProductsApi.xml");
+                var filePath = Path.Combine(AppContext.BaseDirectory, "MyBud.ProductsApi.xml");
                 c.IncludeXmlComments(filePath);
                 c.OperationFilter<AuthResponsesOperationFilter>();
                 c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme

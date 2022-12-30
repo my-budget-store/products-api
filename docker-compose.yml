@@ -1,12 +1,18 @@
-version: '3.1'
+version: '3.4'
 
+name: my-budget-store
 services:
-  postgres:
-    image: postgres
-    restart: always
-    container_name: postgres
-    environment:
-      POSTGRES_USER: dev
-      POSTGRES_PASSWORD: Password7!
+  mybud.productsapi:
+    image: ${DOCKER_REGISTRY-}mybudproductsapi
+    container_name: products-api
+    build:
+      context: .
+      dockerfile: src/MyBud.ProductsApi/Dockerfile
     ports:
-      - 5432:5432  
+      - 7182:7182
+    networks:
+      - my-budget-store
+
+networks:
+  my-budget-store:
+    external: true

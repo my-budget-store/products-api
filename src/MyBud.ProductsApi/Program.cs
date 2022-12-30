@@ -38,10 +38,21 @@ builder.Services
     {
         x.RequireHttpsMetadata = false;
         x.TokenValidationParameters = tokenValidationParameters;
-    }); 
+    });
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
 
+app.UseCors("AllowOrigin");
 app.UseConfiguredDatabase();
 if (app.Environment.IsDevelopment())
 {
