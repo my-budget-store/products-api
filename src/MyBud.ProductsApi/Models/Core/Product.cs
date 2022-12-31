@@ -8,7 +8,6 @@ namespace MyBud.ProductsApi.Models.Core
         public int ProductId { get; set; }
         public Guid UserId { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
         public ProductCategory Category { get; set; }
         public double Price { get; set; }
         public double SalePrice { get; set; }
