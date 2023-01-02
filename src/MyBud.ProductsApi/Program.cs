@@ -59,7 +59,7 @@ if (app.Environment.IsDevelopment())
     app.UseConfiguredSwagger();
 }
 
-app.UseHttpsRedirection()
+app
    .UseAuthentication()
    .UseAuthorization();
 

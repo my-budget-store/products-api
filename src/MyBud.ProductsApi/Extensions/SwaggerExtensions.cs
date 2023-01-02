@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
 namespace MyBud.ProductsApi.Extensions
 {
@@ -13,7 +14,7 @@ namespace MyBud.ProductsApi.Extensions
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Products API - V1", Version = "v1" });
                 c.TagActionsBy(api => api.HttpMethod);
 
-                var filePath = Path.Combine(AppContext.BaseDirectory, "MyBud.ProductsApi.xml");
+                var filePath = Path.Combine($"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
                 c.IncludeXmlComments(filePath);
                 c.OperationFilter<AuthResponsesOperationFilter>();
                 c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
