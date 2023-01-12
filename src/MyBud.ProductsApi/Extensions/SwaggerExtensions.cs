@@ -14,8 +14,8 @@ namespace MyBud.ProductsApi.Extensions
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Products API - V1", Version = "v1" });
                 c.TagActionsBy(api => api.HttpMethod);
 
-                var filePath = Path.Combine($"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
-                c.IncludeXmlComments(filePath);
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+                c.IncludeXmlComments(xmlPath);
                 c.OperationFilter<AuthResponsesOperationFilter>();
                 c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {

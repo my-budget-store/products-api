@@ -39,6 +39,7 @@ builder.Services
         x.RequireHttpsMetadata = false;
         x.TokenValidationParameters = tokenValidationParameters;
     });
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "AllowOrigin",
@@ -54,13 +55,13 @@ var app = builder.Build();
 
 app.UseCors("AllowOrigin");
 app.UseConfiguredDatabase();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseConfiguredSwagger();
 }
 
-app
-   .UseAuthentication()
+app.UseAuthentication()
    .UseAuthorization();
 
 app.MapControllers();
